@@ -44,6 +44,7 @@ public class TempConverter {
 }
 
 /*
+2/8/2021
 change directory to the TempConverter project folder
 javac -d out src\edu\cnm\deepdive\*.java     <--- look for sourcecode to compile to bytecode .class file directory structure must match the package path
 java -cp out edu.cnm.deepdive.TempConverter 212     <--- full qualified class name inside the "out" directory
@@ -60,7 +61,15 @@ javadoc -d docs\api -sourcepath src -subpackages edu -link https://docs.oracle.c
 jar cfe TempConverter.jar edu.cnm.deepdive.TempConverter -C out edu\cnm\deepdive\TempConverter.class  <--- create jar file from entry point everything inside -C directory
 java -jar TempConverter.jar 212 -40 32
 java -Dmode=c2f -jar TempConverter.jar 212 -40 32
+
+2/9/2021
 git reset --hard    <--- goes back to last commit but doesn't remove untracked files
 git clean -di       <--- remove untracked files from the repository directory
 mvnrepository.org & search for org.junit.jupiter to get latest release version
+Access Levels from most to least restrictive:
+  private = only within class
+  packageprivate (default) = class throughout package, rarely used outside test cases
+  protected = within package
+  public = anywhere in the JVM
+adding build options Run > edit configurations > Modify options > Add VM Options > -ea
 */
