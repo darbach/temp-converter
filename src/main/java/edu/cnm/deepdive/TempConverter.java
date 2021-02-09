@@ -9,14 +9,14 @@ public class TempConverter {
 	public static void main(String[] args) {
 		
 		String mode = System.getProperty("mode");
-		
-		for (int i = 0; i < args.length; i++) {
-			
+
+		for (String arg : args) { //enhanced for loop
+
 			if (mode != null && mode.equals("c2f")) {
-				float tempC = Float.parseFloat(args[i]);
+				float tempC = Float.parseFloat(arg);
 				System.out.println(convertCToF(tempC));
 			} else {  //mode is "f2c", default
-				float tempF = Float.parseFloat(args[i]);
+				float tempF = Float.parseFloat(arg);
 				System.out.println(convertFToC(tempF));
 			}
 		}
@@ -29,8 +29,7 @@ public class TempConverter {
 	 * @return Temperature in Celsius degrees.
 	 */
 	public static float convertFToC(float tempF) {
-		float tempC = (tempF - 32) * 5 / 9;
-		return tempC;
+		return (tempF - 32) * 5 / 9;
 	}
 	
 	/**
@@ -40,8 +39,7 @@ public class TempConverter {
 	 * @return Temperature in Fahrenheit degrees.
 	 */
 	public static float convertCToF(float tempC) {
-		float tempF = tempC * 9 / 5 + 32;
-		return tempF;
+		return tempC * 9 / 5 + 32;
 	}
 }
 
@@ -54,12 +52,15 @@ git init       <---to create a repository
 git add .      <---add everything in it to the staging area
 git commit -m "Simple functionality implemented"  <---50 characters or less
 git remote add origin git@github.com:darbach/temp-converter.git  <---link it to a repository created on github
-git status      <--- get the origin
+git status      <--- get the origin and if there is any updates to files
 git push --set-upstream origin master   <---set the default upstream origin
 java -cp out -Dmode=c2f edu.cnm.deepdive.TempConverter -273.15 0 -40 100
 java -cp out -Dmode=f2c edu.cnm.deepdive.TempConverter 212 32 -40   OR remove the -Dmode argument
-javadoc -d docs\api -sourcepath src -subpackages edu -link https://docs.oracle.com/en/java/javase/11/docs/api/   <---generate javadoc html for all sourcecode in edu subdirectories, link option will insert links to other library documentation
+javadoc -d docs\api -sourcepath src -subpackages edu -link https://docs.oracle.com/en/java/javase/11/docs/api/   <---generate javadoc html for all sourcecode in edu subdirectories, link option will insert links to other library documentation, use "docs/api" in git bash
 jar cfe TempConverter.jar edu.cnm.deepdive.TempConverter -C out edu\cnm\deepdive\TempConverter.class  <--- create jar file from entry point everything inside -C directory
 java -jar TempConverter.jar 212 -40 32
 java -Dmode=c2f -jar TempConverter.jar 212 -40 32
+git reset --hard    <--- goes back to last commit but doesn't remove untracked files
+git clean -di       <--- remove untracked files from the repository directory
+mvnrepository.org & search for org.junit.jupiter to get latest release version
 */
